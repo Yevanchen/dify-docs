@@ -134,7 +134,27 @@ file variables 和 array[file] variables 支持以下文件类型与格式：
 
 <figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption><p>粘贴 URL 进行对话</p></figcaption></figure>
 
-##### 直接在 LLM 节点中使用文件变量
+##### 直接在 LLM 节点中引用文件变量
+对于某些特定类型的文件（如图片），可以在LLM节点中直接使用文件变量。这种方法特别适用于需要视觉分析的场景。以下是具体步骤：
+
+
+1. 在LLM节点中，启用vision功能。这允许模型处理图像输入（模型需要支持vision）。
+
+2. 在LLM节点的变量选择器中，直接引用之前创建的文件变量如果是通过附加功能开启的文件上传，则选择 `sys.files` 变量。
+
+3. 在系统提示词中，指导模型如何处理图像输入。例如，你可以要求模型描述图像内容或回答关于图像的问题。
+
+下面是一个示例配置：
+
+<figure><img src="../../.gitbook/assets/filevariables_in_llm.png" alt=""><figcaption><p>在LLM节点中直接使用文件变量</p></figcaption></figure>
+
+需要注意的是，直接在LLM节点中使用文件变量时，我们需要确保文件变量仅包含图片文件，否则可能会导致错误。如果用户可能上传不同类型的文件，我们需要使用列表操作来进行过滤。
+
+
+#### 文件下载
+可以将文件变量放置到 answer 节点或者 end 节点中，当应用运行到该节点都时候将会在会话框中提供文件 card，可以通过点击卡片的下载按钮下载文件。
+
+<figure><img src="../../.gitbook/assets/filedownload.png" alt=""><figcaption><p>文件下载</p></figcaption></figure>
 
 
 ### 进阶使用
